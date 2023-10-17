@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Dashboard') }}
+                {{ __('Daftar Pengguna') }}
             </h2>
             <div class="text-white">
                 <a href="{{ route('user.registrasi') }}">Registrasi</a>
@@ -60,12 +60,6 @@
                                         {{ $user->birthDate }}
                                     </td>
                                 </tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Religion
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        {{ $user->agama }}
-                                    </td>
                                 </tr>
                                     <th scope="col" class="px-6 py-3">
                                         Gender
@@ -87,4 +81,4 @@
     </div>
 </x-app-layout>
 
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04 //
+{{-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 --}}

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\DataTables\UsersDataTable;
 
 class UserController extends Controller
 {
@@ -14,10 +15,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    // public function index()
+    // {
+    //     $users  = User::all();
+//     return view('user.daftarPengguna', compact('users'));
+    // }
+
+    public function index(UsersDataTable $dataTable)
     {
-        $users  = User::all();
-        return view('user.daftarPengguna', compact('users'));
+        return $dataTable->render('user.daftarPengguna');
     }
 
     /**
@@ -46,7 +52,6 @@ class UserController extends Controller
             'address'       => ['required', 'string', 'max:10000'],
             'birthDate'     => ['required', 'date',],
             'phoneNumber'   => ['required', 'string', 'max:20'],
-            'agama'         => ['required', 'string', 'max:20'],
             'jenisKelamin'  => ['required', 'numeric', 'in:0,1']
         ]);
         $user = User::create([
@@ -57,7 +62,6 @@ class UserController extends Controller
             'address'       => $request->address,
             'birthDate'     => $request->birthDate,
             'phoneNumber'   => $request->phoneNumber,
-            'agama'         => $request->agama,
             'jenisKelamin'  => $request->jenisKelamin
         ]);
         return redirect()->route("user.DaftarPengguna");

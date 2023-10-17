@@ -46,5 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/koleksiView/{collection}', [CollectionController::class, 'show',])->name('koleksi.infoKoleksi');
 });
 
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04 //
+route::get('/getAllCollections', [CollectionController::class, 'getAllCollections']);
+
 require __DIR__.'/auth.php';
+
+// Rizqy Nurfauzella 6706223074 D3 IF 46-04

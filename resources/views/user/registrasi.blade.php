@@ -61,13 +61,6 @@
                 :value="old('phoneNumber')" required autofocus autocomplete="phoneNumber" />
             <x-input-error :messages="$errors->get('phoneNumber')" class="mt-2" />
         </div>
-        <!-- agama -->
-        <div class="mt-4">
-            <x-input-label for="agama" :value="__('Agama')" />
-            <x-text-input id="agama" class="block mt-1 w-full" type="tel" name="agama"
-                :value="old('agama')" required autofocus autocomplete="agama" />
-            <x-input-error :messages="$errors->get('agama')" class="mt-2" />
-        </div>
         <!-- jenisKelamin -->
         <div class="mt-4">
             <x-input-label for="jenisKelamin" :value="__('Jenis Kelamin')" />
@@ -90,4 +83,3 @@
     </form>
 </x-guest-layout>
 
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04 //
