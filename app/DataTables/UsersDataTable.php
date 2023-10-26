@@ -19,7 +19,7 @@ class UsersDataTable extends DataTable
         return (new EloquentDataTable($query))
         ->addColumn('action', function (User $user) {
             return '<div class="btn-group btn-group-sm flex gap-4" role="group" aria-label="Action Buttons">
-                        <a href="/users/' . $user->id . '/edit" class="btn btn-gray">Edit</a>
+                        <a href="/userEdit/' . $user->id . '" class="btn btn-gray">Edit</a>
                         <a href="/userView/' . $user->id . '" class="btn btn-gray">View</a>
                         <a href="/users/' . $user->id . '/delete" class="btn btn-gray">Delete</a>
                     </div>';

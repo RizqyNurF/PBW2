@@ -4,102 +4,112 @@ namespace App\Http\Controllers;
 
 use App\Models\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
 use App\DataTables\CollectionsDataTable;
 
 class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     // public function index()
     // {
-    //     $collections  = Collection ::all();
-    //     return view('koleksi.daftarKoleksi', compact('collections'));
+    //     $collections = Collection::all();
+    //     return view("koleksi.daftarKoleksi", compact('collections'));
     // }
-     public function index(CollectionsDataTable $dataTable)
+
+    public function index(CollectionsDataTable $dataTable)
     {
         return $dataTable->render('koleksi.daftarKoleksi');
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('koleksi.registrasi');
+        return view("koleksi.registrasi");
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'namaKoleksi'       => ['required', 'string', 'max:100' ],
-            'jenisKoleksi'      => ['required', 'numeric', 'in:0,1,2'],
-            'jumlahKoleksi'     => ['required', 'integer'],
+            'namaKoleksi' => ['required', 'string', 'max:100'],
+            'jenisKoleksi' => ['required', 'numeric', 'in:1,2,3'],
+            'jumlahKoleksi' => ['required', 'integer']
         ]);
 
-        $collection = Collection::create([
-            'namaKoleksi'       => $request->namaKoleksi,
-            'jenisKoleksi'      => $request->jenisKoleksi,
-            'jumlahKoleksi'     => $request->jumlahKoleksi
-        ]);
-        return redirect()->route("koleksi.daftarKoleksi");
+        DB::beginTransaction();
+
+        try {
+
+            Collection::create([
+                'namaKoleksi' => $request->namaKoleksi,
+                'jenisKoleksi' => $request->jenisKoleksi,
+                'jumlahKoleksi' => $request->jumlahKoleksi
+            ]);
+
+            DB::commit();
+
+            return redirect()->route("koleksi.daftarKoleksi")->with("success", "Added collection successfully");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route("koleksi.daftarKoleksi")->with("error", "Added collection failed");
+        }
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show(Collection $collection)
     {
-        return view("koleksi.infoKoleksi", compact('collection'));
+        return view('koleksi.infoKoleksi', compact('collection'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Collection $collection)
     {
-        //
+        return view("koleksi.editKoleksi", compact('collection'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                "namaKoleksi" => ["required"],
+                "jenisKoleksi" => ["required"],
+                "jumlahKoleksi" => ["required"],
+            ]);
+
+            $affected = DB::table('collections')
+                ->where("id", $request->id)
+                ->update($request->except(['_token']));
+
+            DB::commit();
+            return redirect()->route("koleksi.daftarKoleksi")->with("success", "Updated collection successfully");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route("koleksi.daftarKoleksi")->with("error", "Updated collection failed");
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
         //
     }
-
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04 //
 }
+
+// Rizqy Nurfauzella 6706223074 D3 IF 46-04

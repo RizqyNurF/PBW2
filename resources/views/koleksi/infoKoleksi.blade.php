@@ -1,60 +1,52 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Info Koleksi') }}
-            </h2>
-            <div class="text-white">
-                <a href="{{ route('user.registrasi') }}">Registrasi</a>
-            </div>
-        </div>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Info Koleksi') }}
+        </h2>
     </x-slot>
-
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-grey dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="relative overflow-x-auto">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Nama Koleksi
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        {{$collection->namaKoleksi }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                <th scope="col" class="px-6 py-3">
-                                        Jenis Koleksi
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        @if ($collection->jenisKoleksi == 0)
-                                        <span>Buku</span>
-                                    @elseif ($collection->jenisKoleksi == 1)
-                                        <span>Majalah</span>
-                                    @elseif ($collection->jenisKoleksi == 2)
-                                        <span>Cakram Digital</span>
-                                    @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Jumlah Koleksi
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{ $collection->jumlahKoleksi }}
-                                </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+                    <table class="border-collapse table-fixed w-full text-md">
+                        <tr>
+                            <th
+                                class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                Nama Koleksi</th>
+                            <td
+                                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                                {{ $collection->namaKoleksi }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th
+                                class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                Jenis Koleksi</th>
+                            <td
+                                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                                @if ($collection->jenisKoleksi == 1)
+                                    <span>Buku</span>
+                                @elseif ($collection->jenisKoleksi == 2)
+                                    <span>Majalah</span>
+                                @else
+                                    <span>Cakram Digital</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th
+                                class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-3 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                Jumlah Koleksi</th>
+                            <td
+                                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                                {{ $collection->jumlahKoleksi }}
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
 
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04 //
+// Rizqy Nurfauzella 6706223074 D3 IF 46-04

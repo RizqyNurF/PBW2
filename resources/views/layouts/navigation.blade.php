@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('user.DaftarPengguna')" :active="request()->routeIs('user.DafterPengguna')">
+                    <x-nav-link :href="route('user.daftarPengguna')" :active="request()->routeIs('user.DafterPengguna')">
                         {{ __('Daftar Pengguna') }}
                     </x-nav-link>
                     <x-nav-link :href="route('koleksi.daftarKoleksi')" :active="request()->routeIs('koleksi.daftarKoleksi')">
@@ -104,3 +104,5 @@
         </div>
     </div>
 </nav>
+
+// Rizqy Nurfauzella 6706223074 D3 IF 46-04

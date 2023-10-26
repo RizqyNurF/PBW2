@@ -15,42 +15,39 @@ use Yajra\DataTables\Services\DataTable;
 class CollectionsDataTable extends DataTable
 {
     /**
-     * Build DataTable class.
+     * Build the DataTable class.
      *
      * @param QueryBuilder $query Results from query() method.
-     * @return \Yajra\DataTables\EloquentDataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function (Collection $Collection) {
-            return '<div class="btn-group btn-group-sm flex gap-4" role="group" aria-label="Action Buttons">
-                        <a href="/users/' . $Collection->id . '/edit" class="btn btn-gray">Edit</a>
-                        <a href="/koleksiView/' . $Collection->id . '" class="btn btn-gray">View</a>
-                        <a href="/users/' . $Collection->id . '/delete" class="btn btn-gray">Delete</a>
-                    </div>';
-        })
-        ->addColumn('jenisKoleksi', function (Collection $Collection) {
-            switch ($Collection->jenisKoleksi) {
-                case 0:
-                    return 'Buku';
-                case 1:
-                    return 'Majalah';
-                case 2:
-                    return 'Cakram Digital';
-                default:
-                    return '-';
-            }
-        });
-
-            // ->setRowId('id');
+            // ->addColumn('action', 'collections.action')
+            ->addColumn('action', function (Collection $collection) {
+                return '<div class="btn-group btn-group-sm flex gap-4" role="group" aria-label="Action Buttons">
+                    <a href="/koleksiEdit/' . $collection->id . '" class="btn btn-gray">Edit</a>
+                    <a href="/koleksiView/' . $collection->id . '" class="btn btn-gray">View</a>
+                    <a href="/users/'       . $collection->id . '/delete" class="btn btn-gray">Delete</a>
+                </div>';
+            })
+            ->addColumn('jenisKoleksi', function (Collection $collection) {
+                switch ($collection->jenisKoleksi) {
+                    case 1:
+                        return "Buku";
+                        break;
+                    case 2:
+                        return "Majalah";
+                        break;
+                    case 3:
+                        return "Cakram Digital";
+                        break;
+                }
+            })
+            ->setRowId('id');
     }
 
     /**
-     * Get query source of dataTable.
-     *
-     * @param \App\Models\Collection $model
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Get the query source of dataTable.
      */
     public function query(Collection $model): QueryBuilder
     {
@@ -58,48 +55,44 @@ class CollectionsDataTable extends DataTable
     }
 
     /**
-     * Optional method if you want to use html builder.
-     *
-     * @return \Yajra\DataTables\Html\Builder
+     * Optional method if you want to use the html builder.
      */
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('collections-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('print'),
-                    ]);
+            ->setTableId('collections-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('print')
+            ]);
     }
 
     /**
      * Get the dataTable columns definition.
-     *
-     * @return array
      */
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            // Column::make('id'),
             Column::make('namaKoleksi'),
             Column::make('jenisKoleksi'),
             Column::make('jumlahKoleksi'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
+            // Column::make('created_at'),
+            // Column::make('updated_at'),
         ];
     }
 
     /**
-     * Get filename for export.
-     *
-     * @return string
+     * Get the filename for export.
      */
     protected function filename(): string
     {
