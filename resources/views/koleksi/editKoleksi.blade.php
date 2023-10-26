@@ -4,7 +4,6 @@
             {{ __('Info Koleksi') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-grey dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -71,7 +70,7 @@
                         </table>
                         <div class="flex justify-end pt-6 pr-9">
                             <x-primary-button class="ml-4">
-                                {{ __('Update Collection') }}
+                                {{ __('Update Koleksi') }}
                             </x-primary-button>
                         </div>
                     </form>

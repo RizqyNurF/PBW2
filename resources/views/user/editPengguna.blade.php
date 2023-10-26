@@ -114,7 +114,7 @@
                     </table>
                     <div class="flex justify-end pt-6 pr-9">
                         <x-primary-button class="ml-4">
-                            {{ __('Update Collection') }}
+                            {{ __('Update Pengguna') }}
                         </x-primary-button>
                     </div>
                 </form>
