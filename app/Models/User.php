@@ -23,8 +23,9 @@ class User extends Authenticatable
         'password',
         'address',
         'phoneNumber',
-        'birthDate',
-        'jenisKelamin'
+        'agama',
+        'birthdate',
+        'jenis_kelamin'
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -43,5 +44,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-// Rizqy Nurfauzella 6706223074 D3IF46-04 //
 }

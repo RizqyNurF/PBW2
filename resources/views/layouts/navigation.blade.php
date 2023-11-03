@@ -1,3 +1,5 @@
+<!-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 -->
+
 <nav x-data="{ open: false }" class="bg-gray dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,6 +22,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('koleksi.daftarKoleksi')" :active="request()->routeIs('koleksi.daftarKoleksi')">
                         {{ __('Daftar Koleksi') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('transaction.daftarTransaksi')" :active="request()->routeIs('transaction.daftarTransaksi')">
+                        {{ __('Daftar Transaksi') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -104,5 +109,3 @@
         </div>
     </div>
 </nav>
-
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04

@@ -24,8 +24,8 @@ class UsersDataTable extends DataTable
                         <a href="/users/' . $user->id . '/delete" class="btn btn-gray">Delete</a>
                     </div>';
         })
-        ->addColumn('jenisKelamin', function (User $user) {
-            switch ($user->jenisKelamin) {
+        ->addColumn('jenis_kelamin', function (User $user) {
+            switch ($user->jenis_kelamin) {
                 case 0:
                     return 'Laki-laki';
                 case 1:
@@ -58,13 +58,13 @@ class UsersDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('fullName'),
+            Column::make('fullname'),
             Column::make('email'),
             Column::make('username'),
             Column::make('address'),
             Column::make('phoneNumber'),
             Column::make('birthDate'),
-            Column::make('jenisKelamin'),
+            Column::make('jenis_kelamin'),
             Column::computed('action')
                             ->exportable(false)
                             ->printable(false)

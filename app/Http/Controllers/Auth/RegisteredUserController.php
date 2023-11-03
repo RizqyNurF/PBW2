@@ -30,36 +30,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'username'      => ['required', 'string', 'max:100'],
-            'fullname'      => ['required', 'string', 'max:100'],
-            'email'         => ['required', 'string', 'email', 'max:255'],
-            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
-            'address'       => ['required', 'string', 'max:10000'],
-            'birthDate'     => ['required', 'date',],
-            'phoneNumber'   => ['required', 'string', 'max:20'],
-            'agama'         => ['required', 'string', 'max:20'],
-            'jenisKelamin'  => ['required', 'numeric', 'in:0,1']    
+        User::create([
+            "username" => $request->username,
+            "fullname" => $request->fullname,
+            "email" => $request->email,
+            'password' => Hash::make($request->password),
+            "address" => $request->address,
+            "birthdate" => $request->birthdate,
+            "phoneNumber" => $request->phoneNumber,
+            "agama" => $request->agama,
+            "jenis_kelamin" => $request->jenis_kelamin,
         ]);
 
-        $user = User::create([
-            'username'      => $request->username,
-            'fullname'      => $request->fullname,
-            'email'         => $request->email,
-            'password'      => Hash::make($request->password),
-            'address'       => $request->address, 
-            'birthDate'     => $request->birthDate,
-            'phoneNumber'   => $request->phoneNumber,
-            'agama'         => $request->agama,
-            'jenisKelamin'  => $request->jenisKelamin
+        // event(new Registered($user));
 
-            //RIZQY NURFAUZELLA 6706223074 D3IF46-04
-        ]);
+        // Auth::login($user);
 
-        event(new Registered($user));
-
-        //Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('login');
     }
 }

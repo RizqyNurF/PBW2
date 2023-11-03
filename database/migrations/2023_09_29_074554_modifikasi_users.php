@@ -1,3 +1,5 @@
+<!-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -17,12 +19,13 @@ return new class extends Migration
             //penambahan kolom baru
             $table->string('username', 100);
             $table->string('address', 1000);
-            $table->string('phoneNumber', 20);
-            $table->date('birthDate')->nullable();
+            $table->string('phoneNumber', 100);
+            $table->date('birthdate')->nullable();
 
-            //modifikasi kolom
-            $table->renameColumn('name', 'fullName');
+            // Modifikasi kolom
+            $table->renameColumn('name', 'fullname');
             $table->string('email')->nullable()->change();
+
         });
 
         //Rizqy Nurfauzella 6706223074 D3IF46-04

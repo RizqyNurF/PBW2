@@ -1,5 +1,7 @@
+<!-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 -->
+
 <x-guest-layout>
-    <form method="POST" action="{{ route('user.store.daftarPengguna') }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
@@ -54,12 +56,12 @@
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
-        <!-- birthDate -->
+        <!-- birthdate -->
         <div class="mt-4">
-            <x-input-label for="birthDate" :value="__('Tanggal Lahir')" />
-            <x-text-input id="birthDate" class="block mt-1 w-full" type="date" name="birthDate" :value="old('birthDate')"
-                required autofocus autocomplete="birthDate" />
-            <x-input-error :messages="$errors->get('birthDate')" class="mt-2" />
+            <x-input-label for="birthdate" :value="__('Tanggal Lahir')" />
+            <x-text-input id="birthdate" class="block mt-1 w-full" type="date" name="birthdate" :value="old('birthdate')"
+                required autofocus autocomplete="birthdate" />
+            <x-input-error :messages="$errors->get('birthdate')" class="mt-2" />
         </div>
 
         <!-- phoneNumber -->
@@ -70,33 +72,29 @@
             <x-input-error :messages="$errors->get('phoneNumber')" class="mt-2" />
         </div>
 
-        <!-- agama -->
+        {{-- agana --}}
         <div class="mt-4">
             <x-input-label for="agama" :value="__('Agama')" />
-            <x-text-input id="agama" class="block mt-1 w-full" type="tel" name="agama"
-                :value="old('agama')" required autofocus autocomplete="agama" />
+            <x-text-input id="agama" class="block mt-1 w-full" type="text" name="agama" :value="old('agama')"
+                required autofocus autocomplete="agama" />
             <x-input-error :messages="$errors->get('agama')" class="mt-2" />
         </div>
 
-        <!-- jenisKelamin -->
+        {{-- jenis kelamin --}}
         <div class="mt-4">
-            <x-input-label for="jenisKelamin" :value="__('Jenis Kelamin')" />
-            <select class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"  name="jenisKelamin" id="jenisKelamin">
-                <option selected disable>Pilih Jenis Kelamin</option>
-                <option value="0">Pria</option>
-                <option value="1">Wanita</option>
+            <x-input-label for="jenis_kelamin" :value="__('Jenis Kelamin')" />
+            <select name="jenis_kelamin"
+                class="w-full mt-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                <option disabled selected>Pilih Jenis Kelamin</option>
+                <option value="0" {{ old('jenis_kelamin') == '0' ? 'selected' : '' }}>Pria</option>
+                <option value="1" {{ old('jenis_kelamin') == '1' ? 'selected' : '' }}>Wanita</option>
             </select>
-            <x-input-error :messages="$errors->get('jenisKelamin')" class="mt-2" />
         </div>
-
-        <!-- RIZQY NURFAUZELLA 6706223074 D3IF46-04 -->
-
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                 href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
-
             <x-primary-button class="ml-4">
                 {{ __('Register') }}
             </x-primary-button>

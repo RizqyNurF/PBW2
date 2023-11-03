@@ -1,3 +1,5 @@
+<!-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 -->
+
 <?php
 
 use Egulias\EmailValidator\Parser\Comment;
@@ -15,12 +17,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('collections', function (Blueprint $table) {
-            $table     ->id();
-            $table     ->string('namaKoleksi');
-            $table     ->tinyInteger('jenisKoleksi')->comment('1: Buku, 2: Majalah, 3: Cakram Digital');
-            $table     ->integer('jumlahKoleksi');
-            $table     ->timestamps();
-
+            $table->id();
+            $table->string('nama', 100);
+            $table->tinyInteger('jenis')->comment('1: Buku, 2: Majalah, 3: Cakram Digital');
+            $table->integer('jumlahAwal');
+            $table->integer('jumlahSisa');
+            $table->integer('jumlahKeluar');
+            $table->timestamps();
         //Rizqy Nurfauzella 6706223074 D3IF46-04
         });
     }

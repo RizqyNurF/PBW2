@@ -1,3 +1,5 @@
+<!-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -16,7 +18,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             //penambahan agama dan jenis kelamin
             $table->string('agama', 20);
-            $table->tinyInteger('jenisKelamin');
+            $table->tinyInteger('jenis_kelamin');
 
             //RIZQY NURFAUZELLA 6706223074 D3IF46-04
         });

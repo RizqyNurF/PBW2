@@ -1,7 +1,9 @@
+<!-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 -->
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Info Pengguna') }}
+            {{ __('Edit Pengguna') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -12,6 +14,7 @@
                     @csrf
                     <input type="hidden" name="id" value="{{ $user->id }}">
                     <table class="border-collapse table-fixed w-full text-md">
+
                         <tr>
                             <th
                                 class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -25,6 +28,7 @@
                                 </div>
                             </td>
                         </tr>
+
                         <tr>
                             <th
                                 class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -38,6 +42,7 @@
                                 </div>
                             </td>
                         </tr>
+
                         <tr>
                             <th
                                 class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -51,6 +56,7 @@
                                 </div>
                             </td>
                         </tr>
+
                         <tr>
                             <th
                                 class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -64,6 +70,7 @@
                                 </div>
                             </td>
                         </tr>
+
                         <tr>
                             <th
                                 class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -78,6 +85,7 @@
                                 </div>
                             </td>
                         </tr>
+
                         <tr>
                             <th
                                 class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -92,6 +100,22 @@
                                 </div>
                             </td>
                         </tr>
+
+                        <tr>
+                            <th
+                                class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                Agama</th>
+                            <td
+                                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                                <div>
+                                    <x-text-input id="agama" class="block mt-1 w-full" type="text"
+                                        name="agama" :value="old('agama', $user->agama)" required autofocus
+                                        autocomplete="agama" />
+                                    <x-input-error :messages="$errors->get('agama')" class="mt-2" />
+                                </div>
+                            </td>
+                        </tr>
+
                         <tr>
                             <th
                                 class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -123,4 +147,3 @@
     </div>
 </x-app-layout>
 
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04
