@@ -78,7 +78,7 @@
                           </x-primary-button>
 
                           <x-primary-button class="ml-4">
-                              {{ __('Ok') }}
+                              {{ __('Update Koleksi') }}
                           </x-primary-button>
                       </div>
                   </form>

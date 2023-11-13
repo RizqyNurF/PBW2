@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// Rizqy Nurfauzella 6706223074 D3 IF 46-04
+
 use App\DataTables\UsersDataTable;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -134,7 +136,6 @@ class UserController extends Controller
             return redirect()->route("user.daftarPengguna")->with('error', "Updated user failed");
         }
     }
-    // Ramadhan abdul aziz 6706223026 46-04
 
     public function getAllUsers() {
         $users = DB::table('users')

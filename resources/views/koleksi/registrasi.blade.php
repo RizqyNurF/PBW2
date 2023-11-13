@@ -2,15 +2,15 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tambah Koleksi') }}
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Registrasi Koleksi') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
           <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-gray overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-gray-800 border-b border-gray-200">
                   <form method="POST" action="/koleksiStore">
                       @csrf
 
@@ -24,18 +24,23 @@
                       </div>
 
                       <!-- Jenis -->
-                      <div>
-                          <x-input-label for="jenis" :value="__('Jenis')" />
 
-                          <select id="jenis" name="jenis" class="form-select" required>
-                                <option>Pilih salah satu</option>
-                                <option value="1">Buku</option>
-                                <option value="2">Majalah</option>
-                                <option value="3">Cakram Digital</option>
-                            </select>
-
-                          <x-input-error :messages="$errors->get('jenis')" class="mt-2" />
-                      </div>
+                            <div class="">
+                                <x-input-label for="jenis" :value="__('Jenis Koleksi')" />
+                                <select name="jenis"
+                                    class="w-full mt-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                                    <option disabled selected>Pilih Jenis Koleksi</option>
+                                    <option value="1" {{ old('jenis') == '1' ? 'selected' : '' }}>
+                                        Buku
+                                    </option>
+                                    <option value="2" {{ old('jenis') == '2' ? 'selected' : '' }}>
+                                        Majalah
+                                    </option>
+                                    <option value="3" {{ old('jenis') == '3' ? 'selected' : '' }}>
+                                        Cakram Digital
+                                    </option>
+                                </select>
+                            </div>
 
                       <!-- Jumlah -->
                       <div>

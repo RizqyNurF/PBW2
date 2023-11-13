@@ -179,7 +179,7 @@
                     </table>
                     <div class="flex justify-end pt-6 pr-9">
                         <x-primary-button class="ml-4">
-                            {{ __('Register User') }}
+                            {{ __('Registrasi Pengguna') }}
                         </x-primary-button>
                     </div>
                 </div>

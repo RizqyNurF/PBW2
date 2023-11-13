@@ -1,5 +1,3 @@
-<!-- Rizqy Nurfauzella 6706223074 D3 IF 46-04 -->
-
 <?php
 
 use App\Http\Controllers\CollectionController;
@@ -54,7 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('koleksiUpdate', [CollectionController::class, 'update'])->name('updateKoleksi');
     });
 
-    // Route Transaksi
+    // Route Transaction
     Route::name('transaction.')->group(function () {
         Route::get('/transaksi', [TransactionController::class, 'index'])->name('daftarTransaksi');
         Route::get('/transaksiTambah', [TransactionController::class, 'create'])->name('registrasi');
@@ -65,11 +63,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/detailTransactionUpdate', [DetailTransactionController::class, 'update'])->name('transaksiView');
     });
 
-    // Route Detail Transaksi
+    // Route Detail Transaction
     Route::get('/detailTransactionKembalikan/{detailTransactionId}', [DetailTransactionController::class, "detailTransaction.detailTransactionKembalikan"])->name('detailTransaction.detailTransactionKembalikan');
 
 
-    // Route Get All
+    // Route getAll
     Route::get('/getAllUsers', [UserController::class,
     'getAllUsers']);
     Route::get('/getAllCollections', [CollectionController::class,

@@ -78,5 +78,3 @@ class UsersDataTable extends DataTable
         return 'Users_'.date('YmdHis');
     }
 }
-
-// Rizqy Nurfauzella 6706223074 D3 IF 46-04
